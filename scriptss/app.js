@@ -39,9 +39,23 @@ const calculo = function () {
 }
 
 function geraPdf() {
-    let doc = new jsPDF();
-    doc.text("Olá mundo!");
-    doc.save('Teste.PDF');
+    let dados = valorP();
+    let dados2 = taxaP();
+    let dados3 = pessoaP();
+    let dados4 = calculo();
+    let dados5 = pegaTxt();
+    let janela = window.open('', '', 'width=800,heigth=600');
+    janela.document.write('<html><head>');
+    janela.document.write('<title>Cupom</title></head>');
+    janela.document.write('<body>');
+    janela.document.write('Valor total: R$' + dados + '</br>');
+    janela.document.write('Taxa de avalição escolhida: %' + dados2 + '</br>');
+    janela.document.write('Quantidade de pessoas: ' + dados3 + '</br>');
+    janela.document.write('Local e Data: ' + dados5 + '</br>');
+    janela.document.write('Valor da gorjeta por pessoa: RS' + dados4 + '</br>');
+    janela.document.write('</body></html>');
+    janela.document.close();
+    janela.print();
 }
 const mostraResult = function () {
     document.getElementById('txtQntPes').value = calculo();
